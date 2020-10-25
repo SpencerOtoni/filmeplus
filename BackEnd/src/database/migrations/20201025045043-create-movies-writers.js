@@ -1,34 +1,22 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('movies', {
+    await queryInterface.createTable('movies-writers', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      note: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      url_image: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      status: {
-        type: Sequelize.BOOLEAN,
-      },
-      date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      user_id: {
+      movie_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'movies', key: 'id' },
+        onUpdate: 'CASCADE',
+        OnDelete: 'SET NULL',
+        allowNull: true,
+      },
+      writers_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'writers', key: 'id' },
         onUpdate: 'CASCADE',
         OnDelete: 'SET NULL',
         allowNull: true,
@@ -45,6 +33,6 @@ module.exports = {
   },
 
   down: async queryInterface => {
-    await queryInterface.dropTable('movies');
+    await queryInterface.dropTable('movies-writers');
   },
 };

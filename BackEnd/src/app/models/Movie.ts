@@ -7,6 +7,8 @@ class Movie extends Model {
 
   public note: string;
 
+  public url_image: string;
+
   public status: boolean;
 
   public date: date;
@@ -22,6 +24,7 @@ class Movie extends Model {
       {
         name: Sequelize.STRING,
         note: Sequelize.STRING,
+        url_image: Sequelize.STRING,
         status: Sequelize.BOOLEAN,
         date: Sequelize.DATE,
         user_id: Sequelize.INTEGER,

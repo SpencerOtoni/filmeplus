@@ -2,10 +2,13 @@ import Sequelize from 'sequelize';
 
 import User from '../app/models/User';
 import Movie from '../app/models/Movie';
+import Actors from '../app/models/Actors';
+import Directors from '../app/models/Directors';
+import Writers from '../app/models/Writers';
 
 import databaseConfig from '../config/database';
 
-const models = [User, Movie];
+const models = [User, Movie, Actors, Directors, Writers];
 
 class Database {
   public connection: Sequelize.Sequelize;
