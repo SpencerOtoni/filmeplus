@@ -39,6 +39,21 @@ class Movie extends Model {
 
   static associate(models: any) {
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
+    this.belongsToMany(models.Actors, {
+      through: 'MovieActor',
+      foreignKey: 'movie_id',
+      as: 'movie',
+    });
+    this.belongsToMany(models.Directors, {
+      through: 'MovieDirector',
+      foreignKey: 'movie_id',
+      as: 'movie',
+    });
+    this.belongsToMany(models.Writers, {
+      through: 'MovieWriters',
+      foreignKey: 'movie_id',
+      as: 'movie',
+    });
   }
 }
 

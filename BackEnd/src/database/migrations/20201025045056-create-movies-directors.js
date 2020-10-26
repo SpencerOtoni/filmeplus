@@ -14,7 +14,7 @@ module.exports = {
         OnDelete: 'SET NULL',
         allowNull: true,
       },
-      writers_id: {
+      directors_id: {
         type: Sequelize.INTEGER,
         references: { model: 'directors', key: 'id' },
         onUpdate: 'CASCADE',

@@ -5,10 +5,22 @@ import Movie from '../app/models/Movie';
 import Actors from '../app/models/Actors';
 import Directors from '../app/models/Directors';
 import Writers from '../app/models/Writers';
+import MovieActor from '../app/models/MovieActor';
+import MovieDirector from '../app/models/MovieDirector';
+import MovieWriter from '../app/models/MovieWriter';
 
 import databaseConfig from '../config/database';
 
-const models = [User, Movie, Actors, Directors, Writers];
+const models = [
+  User,
+  Movie,
+  Actors,
+  Directors,
+  Writers,
+  MovieActor,
+  MovieDirector,
+  MovieWriter,
+];
 
 class Database {
   public connection: Sequelize.Sequelize;

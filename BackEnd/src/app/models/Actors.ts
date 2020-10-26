@@ -21,6 +21,14 @@ class Actors extends Model {
 
     return this;
   }
+
+  static associate(models: any) {
+    this.belongsToMany(models.Movie, {
+      through: 'MovieActor',
+      foreignKey: 'actor_id',
+      as: 'actor',
+    });
+  }
 }
 
 export default Actors;

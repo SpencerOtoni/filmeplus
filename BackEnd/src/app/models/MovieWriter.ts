@@ -1,9 +1,11 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Writers extends Model {
+class MovieWriter extends Model {
   public id?: number;
 
-  public name: string;
+  public movie_id: number;
+
+  public writers_id: number;
 
   public readonly createdAt?: Date;
 
@@ -12,7 +14,8 @@ class Writers extends Model {
   static init(sequelize: Sequelize.Sequelize) {
     super.init(
       {
-        name: Sequelize.STRING,
+        movie_id: Sequelize.INTEGER,
+        writers_id: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -23,12 +26,13 @@ class Writers extends Model {
   }
 
   static associate(models: any) {
-    this.belongsToMany(models.Movie, {
-      through: 'MovieWriter',
+    this.belongsToMany(models.Movies, {
+      foreignKey: 'movie_id',
+    });
+    this.belongsToMany(models.Writers, {
       foreignKey: 'writers_id',
-      as: 'writer',
     });
   }
 }
 
-export default Writers;
+export default MovieWriter;
