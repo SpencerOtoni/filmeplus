@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('movies', {
+    await queryInterface.createTable('Movies', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -28,10 +28,10 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'Users', key: 'id' },
         onUpdate: 'CASCADE',
         OnDelete: 'SET NULL',
-        allowNull: true,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -45,6 +45,6 @@ module.exports = {
   },
 
   down: async queryInterface => {
-    await queryInterface.dropTable('movies');
+    await queryInterface.dropTable('Movies');
   },
 };
